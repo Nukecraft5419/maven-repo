@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="logo.png" alt="Nukecraft5419 Logo" width="160" />
+<img src="https://raw.githubusercontent.com/Nukecraft5419/maven-repo/refs/heads/main/logo.png" alt="Nukecraft5419 Logo" height="256"/>
 
 # 📦 Nukecraft5419 Maven Repository
 
