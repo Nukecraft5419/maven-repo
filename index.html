@@ -3,94 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nukecraft5419 | Maven Repository</title>
+    <title>Nukecraft5419 | Maven Repo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --code-bg: #010409;
-            --border: #30363d;
+            /* Catppuccin Mocha Colors */
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
+            --text: #cdd6f4;
+            --subtext: #a6adc8;
+            --surface: #313244;
+            --overlay: #6c7086;
+            --blue: #89b4fa;
+            --mauve: #cba6f7;
+            --green: #a6e3a1;
         }
+
+        /* Particles Background Layer */
+        #particles-js {
+            position: fixed;
+            width: 100%; height: 100%;
+            background-color: var(--base);
+            z-index: -2;
+            top: 0; left: 0;
+        }
+
+        /* Neon Spotlight effect (Follows mouse) */
+        #spotlight {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle 400px at var(--x, 50%) var(--y, 50%), rgba(137, 180, 250, 0.12), transparent 80%);
+        }
+
+        /* Entrance Animations */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            color: var(--text);
+            font-family: 'Inter', 'Ubuntu', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            padding: 60px 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
         }
-        .container {
-            background-color: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            max-width: 700px;
-            width: 100%;
-        }
-        h1 { color: var(--accent); margin-top: 0; font-size: 28px; }
-        p { line-height: 1.6; color: var(--text-main); margin-bottom: 25px; }
-        .setup-label {
-            text-align: left;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-        pre {
-            background-color: var(--code-bg);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: left;
-            border: 1px solid var(--border);
-            color: #ff7b72; /* Color for strings/values */
-            font-size: 14px;
-            overflow-x: auto;
-            margin-bottom: 20px;
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-        }
-        .kw { color: #79c0ff; } /* Keywords */
-        .cmt { color: #8b949e; } /* Comments */
-        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
-        a:hover { text-decoration: underline; }
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            font-size: 14px;
-            color: var(--text-muted);
+
+        .anim-1 { animation: slideUp 0.6s ease forwards; }
+        .anim-2 { animation: slideUp 0.8s ease forwards; opacity: 0; }
+        .anim-3 { animation: slideUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
+        .anim-4 { animation: fadeIn 1.2s ease forwards; opacity: 0; }
+
+        h1 {
+            margin: 0 0 0.5rem;
+            font-size: 2.8rem;
+            color: var(--blue);
             text-align: center;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            text-shadow: 0 0 20px rgba(137, 180, 250, 0.2);
         }
+
+        .desc { text-align: center; margin-bottom: 2.5rem; color: var(--subtext); font-size: 1.15rem; }
+
+        /* Repository Glass Card */
+        .container {
+            background: rgba(24, 24, 37, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--surface);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .container:hover {
+            border-color: var(--blue);
+            transform: translateY(-5px);
+        }
+
+        /* Tabs Styling */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            background: var(--crust);
+            padding: 8px 8px 0 8px;
+            border-radius: 14px 14px 0 0;
+            border: 1px solid var(--surface);
+            border-bottom: none;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--subtext);
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .tab-btn:hover { color: var(--text); background: var(--surface); }
+        .tab-btn.active { background: var(--base); color: var(--blue); box-shadow: inset 0 -2px 0 var(--blue); }
+
+        /* Code Block Area */
+        pre {
+            background: rgba(17, 17, 27, 0.8);
+            padding: 2.5rem;
+            border: 1px solid var(--surface);
+            border-radius: 0 0 18px 18px;
+            margin: 0;
+            font-size: 15px;
+            overflow-x: auto;
+            line-height: 1.8;
+            height: 280px; /* Fixed height to prevent layout jumps */
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text);
+        }
+
+        .kw { color: var(--mauve); font-weight: bold; }
+        .str { color: var(--green); }
+        .cmt { color: var(--overlay); font-style: italic; }
+
+        /* Copy Button */
+        .copy-btn {
+            position: absolute; top: 20px; right: 20px;
+            background: var(--surface); border: 1px solid var(--blue);
+            color: var(--text); padding: 8px 18px; border-radius: 10px;
+            cursor: pointer; font-weight: 700; font-size: 13px;
+            transition: 0.3s; z-index: 10;
+        }
+        .copy-btn:hover { background: var(--blue); color: var(--crust); }
+        .copy-btn.success { background: var(--green); border-color: var(--green); color: var(--crust); }
+
+        /* Footer & Extra Links (Restored Ratios) */
+        .footer { margin-top: 2.5rem; border-top: 1px solid var(--surface); padding-top: 2rem; text-align: center; }
+        .footer a { color: var(--blue); text-decoration: none; font-weight: 700; }
+
+        .extra-links {
+            margin-top: 50px;
+            text-align: center;
+            color: var(--subtext);
+            font-size: 14px;
+        }
+        .extra-links p { font-size: 15px; color: var(--subtext); margin-bottom: 15px; }
+        .extra-links a { color: var(--overlay); text-decoration: none; margin: 0 15px; transition: 0.3s; display: inline-block; }
+        .extra-links a:hover { color: var(--blue); transform: translateY(-2px); }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>📦 Nukecraft5419 Repository</h1>
-    <p>This is my official public Maven repository. You can use it to fetch my APIs and libraries (like <b>NukeLexicon</b>) directly via Gradle or Maven.</p>
 
-    <div class="setup-label">Gradle (Kotlin DSL) Setup</div>
-    <pre>
-<span class="kw">repositories</span> {
-    mavenCentral()
-    <span class="kw">maven</span>(<span style="color: #a5d6ff;">"https://repo.nukecraft5419.com/"</span>)
-}
+<div id="particles-js"></div>
+<div id="spotlight"></div>
 
-<span class="kw">dependencies</span> {
-    <span class="cmt">// Replace with the library and version you need</span>
-    implementation(<span style="color: #a5d6ff;">"dev.nukecraft5419:nukelexicon:1.0.0"</span>)
-}</pre>
+<h1 class="anim-1">📦 Nukecraft5419 Repo</h1>
+<p class="desc anim-2">The official Maven repository of Nukecraft5419.</p>
+
+<div class="container anim-3">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showCode('kts')">Gradle (Kotlin)</button>
+        <button class="tab-btn" onclick="showCode('groovy')">Gradle (Groovy)</button>
+        <button class="tab-btn" onclick="showCode('maven')">Maven</button>
+    </div>
+
+    <div class="code-container" style="position: relative;">
+        <button class="copy-btn" id="copy-btn" onclick="copyToClipboard()">Copy</button>
+        <pre id="code-block"><code></code></pre>
+    </div>
 
     <div class="footer">
-        Managed by <a href="https://github.com/nukecraft5419" target="_blank">Nukecraft5419</a> •
-        <a href="https://github.com/nukecraft5419/maven-repo" target="_blank">View on GitHub</a>
+        Maintained by <a href="https://github.com/nukecraft5419" target="_blank">Nukecraft5419</a> •
+        <a href="https://github.com/nukecraft5419/maven-repo" target="_blank">Source Code</a>
     </div>
 </div>
+
+<div class="extra-links anim-4">
+    <p>⚡ Powered by GitHub Pages & Actions</p>
+    <div>
+        <a href="https://github.com/nukecraft5419/maven-repo/pulls" target="_blank">PRs Welcome</a>
+        <a href="https://repo.nukecraft5419.com/dev/nukecraft5419/nukelexicon/maven-metadata.xml" target="_blank">Metadata</a>
+        <a href="https://github.com/nukecraft5419" target="_blank">Author Profile</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    /**
+     * Mouse Spotlight Logic
+     */
+    const spotlight = document.getElementById('spotlight');
+    document.addEventListener('mousemove', (e) => {
+        spotlight.style.setProperty('--x', e.clientX + 'px');
+        spotlight.style.setProperty('--y', e.clientY + 'px');
+    });
+
+    /**
+     * Particles.js Configuration
+     */
+    particlesJS("particles-js", {
+        "particles": {
+            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#89b4fa" },
+            "opacity": { "value": 0.4 },
+            "size": { "value": 3 },
+            "line_linked": { "enable": true, "distance": 150, "color": "#89b4fa", "opacity": 0.2, "width": 1 },
+            "move": { "enable": true, "speed": 1.5 }
+        },
+        "interactivity": {
+            "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
+            "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
+        }
+    });
+
+    const snippets = {
+        kts: `repositories {\n    mavenCentral()\n    maven("https://repo.nukecraft5419.com/")\n}\n\ndependencies {\n    implementation("dev.nukecraft5419:nukelexicon:1.0.0")\n}`,
+        groovy: `repositories {\n    mavenCentral()\n    maven { url 'https://repo.nukecraft5419.com/' }\n}\n\ndependencies {\n    implementation 'dev.nukecraft5419:nukelexicon:1.0.0'\n}`,
+        maven: `<repository>\n    <id>nukecraft5419-repo</id>\n    <url>https://repo.nukecraft5419.com/</url>\n</repository>\n\n<dependency>\n    <groupId>dev.nukecraft5419</groupId>\n    <artifactId>nukelexicon</artifactId>\n    <version>1.0.0</version>\n</dependency>`
+    };
+
+    /**
+     * ADVANCED SYNTAX HIGHLIGHTER
+     * Prevents URL breaking by isolating strings before processing keywords.
+     */
+    function showCode(type) {
+        const raw = snippets[type];
+        window.currentRaw = raw;
+
+        // 1. Initial Escape
+        let text = raw.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+        // 2. ISOLATE STRINGS (Protects URLs from being broken by keyword rules)
+        const savedStrings = [];
+        // Regex handles "quotes", 'quotes' and XML tag content like <url>CONTENT</url>
+        const stringRegex = /(".+?"|'.+?'|(?<=&lt;url&gt;)(.*?)(?=&lt;\/url&gt;))/g;
+
+        text = text.replace(stringRegex, (match) => {
+            savedStrings.push(match);
+            return `__SAVED_STR_${savedStrings.length - 1}__`;
+        });
+
+        // 3. APPLY KEYWORDS (Only to non-protected text)
+        const kwList = ["repositories", "dependencies", "mavenCentral", "implementation", "maven", "url", "repository", "id", "groupId", "artifactId", "version", "dependency"];
+        kwList.forEach(word => {
+            const regex = new RegExp('\\b' + word + '\\b', 'g');
+            text = text.replace(regex, `<span class="kw">${word}</span>`);
+        });
+
+        // 4. APPLY COMMENTS
+        text = text.replace(/(\/\/.*|&lt;!--.*--&gt;)/g, '<span class="cmt">$1</span>');
+
+        // 5. RESTORE STRINGS (With coloring)
+        savedStrings.forEach((str, i) => {
+            text = text.replace(`__SAVED_STR_${i}__`, `<span class="str">${str}</span>`);
+        });
+
+        document.getElementById('code-block').innerHTML = `<code>${text}</code>`;
+
+        // 6. Update Tabs UI
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.getAttribute('onclick').includes(type)) btn.classList.add('active');
+        });
+    }
+
+    function copyToClipboard() {
+        const btn = document.getElementById('copy-btn');
+        navigator.clipboard.writeText(window.currentRaw).then(() => {
+            btn.innerText = "Copied!";
+            btn.classList.add('success');
+            setTimeout(() => { btn.innerText = "Copy"; btn.classList.remove('success'); }, 2000);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => showCode('kts'));
+</script>
+
 </body>
 </html>
