@@ -1,0 +1,31 @@
+# --- IDE & System Files ---
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
+# Ignore VS Code settings
+.vscode/
+# Ignore macOS system files
+.DS_Store
+# Ignore Windows thumbnail caches
+Thumbs.db
+
+# --- Build & Temporary Files ---
+# Ignore Gradle working directory (if copied by mistake)
+.gradle/
+# Ignore the local build directory to keep the repo clean
+build/
+
+# --- MAVEN ARTIFACTS (DO NOT IGNORE) ---
+# We MUST include these files as they represent the actual library
+!*.jar
+!*.pom
+!*.md5
+!*.sha1
+!*.sha256
+!*.sha512
+!*.module
+
+# --- Documentation ---
+# Allow README and LICENSE files
+!README.md
+!LICENSE
