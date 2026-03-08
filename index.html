@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nukecraft5419 | Maven Repository</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --code-bg: #010409;
+            --border: #30363d;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            max-width: 700px;
+            width: 100%;
+        }
+        h1 { color: var(--accent); margin-top: 0; font-size: 28px; }
+        p { line-height: 1.6; color: var(--text-main); margin-bottom: 25px; }
+        .setup-label {
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        pre {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            border: 1px solid var(--border);
+            color: #ff7b72; /* Color for strings/values */
+            font-size: 14px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+        .kw { color: #79c0ff; } /* Keywords */
+        .cmt { color: #8b949e; } /* Comments */
+        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
+        a:hover { text-decoration: underline; }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📦 Nukecraft5419 Repository</h1>
+    <p>This is my official public Maven repository. You can use it to fetch my APIs and libraries (like <b>NukeLexicon</b>) directly via Gradle or Maven.</p>
+
+    <div class="setup-label">Gradle (Kotlin DSL) Setup</div>
+    <pre>
+<span class="kw">repositories</span> {
+    mavenCentral()
+    <span class="kw">maven</span>(<span style="color: #a5d6ff;">"https://repo.nukecraft5419.com/"</span>)
+}
+
+<span class="kw">dependencies</span> {
+    <span class="cmt">// Replace with the library and version you need</span>
+    implementation(<span style="color: #a5d6ff;">"dev.nukecraft5419:nukelexicon:1.0.0"</span>)
+}</pre>
+
+    <div class="footer">
+        Managed by <a href="https://github.com/nukecraft5419" target="_blank">Nukecraft5419</a> •
+        <a href="https://github.com/nukecraft5419/maven-repo" target="_blank">View on GitHub</a>
+    </div>
+</div>
+</body>
+</html>
