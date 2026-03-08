@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap">
     <style>
         :root {
-            /* Catppuccin Mocha Palette - Official Definitions */
+            /* Catppuccin Mocha Palette */
             --base: #1e1e2e;
             --mantle: #181825;
             --crust: #11111b;
@@ -20,7 +20,7 @@
             --green: #a6e3a1;
         }
 
-        /* Interactive Particle Layer */
+        /* Background Layers */
         #particles-js {
             position: fixed;
             width: 100%; height: 100%;
@@ -29,7 +29,6 @@
             top: 0; left: 0;
         }
 
-        /* Neon Spotlight effect - updated via JavaScript */
         #spotlight {
             position: fixed;
             top: 0; left: 0;
@@ -39,7 +38,7 @@
             background: radial-gradient(circle 400px at var(--x, 50%) var(--y, 50%), rgba(137, 180, 250, 0.12), transparent 80%);
         }
 
-        /* Transition Animations */
+        /* Entrance Animations */
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -52,18 +51,17 @@
         body {
             margin: 0;
             color: var(--text);
-            font-family: 'Inter', 'Ubuntu', 'Cantarell', sans-serif;
+            font-family: 'Inter', 'Ubuntu', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px; /* Reduced padding to avoid overflow on smaller screens */
+            padding: 40px 20px;
             box-sizing: border-box;
             overflow-x: hidden;
         }
 
-        /* Sequential entrance animations */
         .anim-1 { animation: slideUp 0.6s ease forwards; }
         .anim-2 { animation: slideUp 0.8s ease forwards; opacity: 0; }
         .anim-3 { animation: slideUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
@@ -81,7 +79,7 @@
 
         .desc { text-align: center; margin-bottom: 2.5rem; color: var(--subtext); font-size: 1.15rem; }
 
-        /* Main Glassmorphism Container */
+        /* Main Container (Desktop First) */
         .container {
             background: rgba(24, 24, 37, 0.7);
             backdrop-filter: blur(12px);
@@ -92,17 +90,12 @@
             width: 100%;
             max-width: 800px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
             position: relative;
         }
 
-        .container:hover {
-            border-color: var(--blue);
-            transform: translateY(-5px) scale(1.01);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 30px rgba(137, 180, 250, 0.2);
-        }
+        .container:hover { border-color: var(--blue); transform: translateY(-5px); }
 
-        /* Tab Navigation Bar */
         .tabs {
             display: flex;
             gap: 10px;
@@ -122,55 +115,60 @@
             border-radius: 10px 10px 0 0;
             font-weight: 600;
             font-size: 14px;
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
         }
 
-        .tab-btn:hover { color: var(--text); background: var(--surface); }
         .tab-btn.active { background: var(--base); color: var(--blue); box-shadow: inset 0 -2px 0 var(--blue); }
 
-        /* Code Block Styling */
-        .code-container { position: relative; }
+        /* Code Block (Restored Desktop Specs) */
         pre {
             background: rgba(17, 17, 27, 0.8);
             padding: 2.5rem;
             border: 1px solid var(--surface);
             border-radius: 0 0 18px 18px;
             margin: 0;
-            font-size: 15px;
+            font-size: 15px; /* Back to original */
             overflow-x: auto;
             line-height: 1.8;
-            height: 280px; /* Fixed height to prevent layout jumps/scrolling on tab change */
+            height: 280px; /* Back to original height */
             font-family: 'JetBrains Mono', monospace;
             color: var(--text);
         }
 
-        /* Syntax Highlighting Classes */
-        .kw { color: var(--mauve); font-weight: bold; } /* Keywords */
-        .str { color: var(--green); }                   /* Strings & URLs */
-        .cmt { color: var(--overlay); font-style: italic; } /* Comments */
+        .kw { color: var(--mauve); font-weight: bold; }
+        .str { color: var(--green); }
+        .cmt { color: var(--overlay); font-style: italic; }
 
-        /* Copy Button Style */
         .copy-btn {
             position: absolute; top: 20px; right: 20px;
             background: var(--surface); border: 1px solid var(--blue);
             color: var(--text); padding: 8px 18px; border-radius: 10px;
             cursor: pointer; font-weight: 700; font-size: 13px;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 10;
+            transition: 0.3s; z-index: 10;
         }
-        .copy-btn:hover { background: var(--blue); color: var(--crust); transform: scale(1.1); }
-        .copy-btn.success { background: var(--green); border-color: var(--green); color: var(--crust); transform: scale(1); }
+        .copy-btn.success { background: var(--green); border-color: var(--green); color: var(--crust); }
 
-        /* Footer & Extra Links Layout */
+        /* --- MOBILE & TABLET ADAPTATION --- */
+        /* This only triggers on screens smaller than 768px */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .container { padding: 1.5rem; }
+            pre { padding: 1.5rem; font-size: 13px; height: 320px; }
+            .tabs { overflow-x: auto; gap: 5px; }
+            .tab-btn { padding: 10px 15px; font-size: 13px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .desc { font-size: 1rem; margin-bottom: 1.5rem; }
+            pre { height: 350px; } /* More height for vertical code on tiny screens */
+            .extra-links a { margin: 5px 10px; display: inline-block; }
+        }
+
+        /* Footer Style */
         .footer { margin-top: 2.5rem; border-top: 1px solid var(--surface); padding-top: 2rem; text-align: center; }
         .footer a { color: var(--blue); text-decoration: none; font-weight: 700; }
-
-        .extra-links {
-            margin-top: 50px;
-            text-align: center;
-            color: var(--subtext);
-            font-size: 14px;
-        }
+        .extra-links { margin-top: 50px; text-align: center; color: var(--subtext); font-size: 14px; }
         .extra-links p { font-size: 15px; color: var(--subtext); margin-bottom: 15px; }
         .extra-links a { color: var(--overlay); text-decoration: none; margin: 0 15px; transition: 0.3s; display: inline-block; }
         .extra-links a:hover { color: var(--blue); transform: translateY(-2px); }
