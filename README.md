@@ -1,17 +1,19 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Nukecraft5419/maven-repo/refs/heads/main/logo.png" alt="Nukecraft5419 Logo" height="256"/>
+<img src="https://raw.githubusercontent.com/Nukecraft5419/maven-repo/refs/heads/main/logo.png" alt="Nukecraft5419 Logo" height="256" />
 
 # 📦 Nukecraft5419 Maven Repository
+
+**The official public Maven repository for Nukecraft5419.** It hosts various APIs, libraries, and frameworks for Java and Minecraft development.
 
 <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java" />
 <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven" />
 <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle" />
 
-This is the official public Maven repository for **Nukecraft5419**.
-It hosts various APIs, libraries, and frameworks for Java and Minecraft development.
+<br/>
 
-🌐 **Web Interface:** [repo.nukecraft5419.com](https://repo.nukecraft5419.com/)
+<img src="https://img.shields.io/github/repo-size/nukecraft5419/maven-repo?style=flat-square&label=Repo%20Size" alt="Repo Size" />
+<img src="https://img.shields.io/github/license/nukecraft5419/maven-repo?style=flat-square&color=blue&label=License" alt="License" />
 
 </div>
 
@@ -26,7 +28,7 @@ To use artifacts from this repository, add the following to your build configura
 ```kotlin
 repositories {
     mavenCentral()
-    maven("[https://repo.nukecraft5419.com/](https://repo.nukecraft5419.com/)")
+    maven("https://repo.nukecraft5419.com/")
 }
 ```
 
@@ -35,32 +37,34 @@ repositories {
 ```gradle
 repositories {
     mavenCentral()
-    maven { url '[https://repo.nukecraft5419.com/](https://repo.nukecraft5419.com/)' }
+    maven { url 'https://repo.nukecraft5419.com/' }
 }
 ```
 
 ### 📦 Maven
 
-```maven
+```xml
 <repository>
     <id>nukecraft5419-repo</id>
-    <url>[https://repo.nukecraft5419.com/](https://repo.nukecraft5419.com/)</url>
+    <url>https://repo.nukecraft5419.com/</url>
 </repository>
 ```
 
-### 📂 Repository Content
+## 📂 Repository Content
 
 This repository follows the standard Maven structure. You can browse the available artifacts directly via the web interface or by navigating the directory tree on GitHub.
 
-**Group ID:** dev.nukecraft5419
+```text
+Group ID: dev.nukecraft5419
 
-**Projects:** NukeLexicon, and more coming soon.
+Projects: NukeLexicon, and more coming soon.
+```
 
-### 🤝 Contributing
+## 🤝 Contributing
 
 If you find any issues with the repository infrastructure or the web landing page, feel free to open an issue or a pull request.
 
-### 📄 License
+## 📄 License
 
 This project is licensed under the MIT License.
 
