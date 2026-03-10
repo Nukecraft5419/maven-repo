@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="assets/logo.png" alt="Maven Repo Logo" height="256" />
+  <img src="https://raw.githubusercontent.com/Nukecraft5419/maven-repo/refs/heads/main/logo.png" alt="Maven Repo Logo" height="256" />
 
   <h1>📦 Nukecraft5419 Maven Repository</h1>
 
