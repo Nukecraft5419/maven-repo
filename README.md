@@ -1,20 +1,27 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Nukecraft5419/maven-repo/refs/heads/main/logo.png" alt="Nukecraft5419 Logo" height="256" />
+  <img src="assets/logo.png" alt="Maven Repo Logo" height="256" />
 
-# 📦 Nukecraft5419 Maven Repository
+  <h1>📦 Nukecraft5419 Maven Repository</h1>
 
-**The official public Maven repository for Nukecraft5419.** It hosts various APIs, libraries, and frameworks for Java and Minecraft development.
+  <em>Official personal Maven repository for hosting custom Java libraries, Spigot APIs, and Javadocs.</em>
 
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java" />
-<img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven" />
-<img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle" />
+  <br>
 
-<br/>
+  <p>
+    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/built-with/java_vector.svg" alt="Java" height="64" style="margin-right: 5px;" />
+    <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/built-with/gradle_vector.svg" alt="Gradle" height="64" style="margin-right: 5px;" />
+  </p>
 
-<img src="https://img.shields.io/github/repo-size/nukecraft5419/maven-repo?style=flat-square&label=Repo%20Size" alt="Repo Size" />
-<img src="https://img.shields.io/github/license/nukecraft5419/maven-repo?style=flat-square&color=blue&label=License" alt="License" />
-
+  <p>
+    <img src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 21" />
+    <a href="https://repo.nukecraft5419.com/">
+      <img src="https://img.shields.io/badge/Maven_Repo-Hosted-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven Repo" />
+    </a>
+    <img src="https://img.shields.io/github/last-commit/nukecraft5419/maven-repo?style=for-the-badge&label=Last%20Update" alt="Last Update" />
+    <img src="https://img.shields.io/github/repo-size/nukecraft5419/maven-repo?style=for-the-badge&label=Repo%20Size" alt="Repo Size" />
+    <img src="https://img.shields.io/github/license/nukecraft5419/maven-repo?style=for-the-badge&color=blue&label=License" alt="License" />
+  </p>
 </div>
 
 ---
@@ -32,14 +39,18 @@ repositories {
 }
 ```
 
+---
+
 ### 🐘 Gradle (Groovy)
 
-```gradle
+```groovy
 repositories {
     mavenCentral()
     maven { url 'https://repo.nukecraft5419.com/' }
 }
 ```
+
+---
 
 ### 📦 Maven
 
@@ -49,6 +60,8 @@ repositories {
     <url>https://repo.nukecraft5419.com/</url>
 </repository>
 ```
+
+---
 
 ## 📂 Repository Content
 
@@ -60,13 +73,19 @@ Group ID: dev.nukecraft5419
 Projects: NukeLexicon, and more coming soon.
 ```
 
+---
+
 ## 🤝 Contributing
 
 If you find any issues with the repository infrastructure or the web landing page, feel free to open an issue or a pull request.
 
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+---
 
 <div align="center">
   <sub>Built with ❤️ by Nukecraft5419</sub>
