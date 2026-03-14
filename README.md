@@ -9,6 +9,12 @@
   <br>
 
   <p>
+    <a href="https://discord.nukecraft5419.com/">
+      <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg" alt="discord-plural" height="64" style="margin-right: 5px;" />
+    </a>
+    <a href="https://x.com/Nukecraft5419">
+      <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/twitter-singular_vector.svg" alt="twitter-singular" height="64" style="margin-right: 5px;" />
+    </a>
     <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/built-with/java_vector.svg" alt="Java" height="64" style="margin-right: 5px;" />
     <img src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/built-with/gradle_vector.svg" alt="Gradle" height="64" style="margin-right: 5px;" />
   </p>
