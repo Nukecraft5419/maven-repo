@@ -347,69 +347,64 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-      /**
-       * Mouse Spotlight Logic
-       * Syncs cursor coordinates with CSS custom properties
-       */
+      // Spotlight
       const spotlight = document.getElementById("spotlight");
-      document.addEventListener("mousemove", (e) => {
-        spotlight.style.setProperty("--x", e.clientX + "px");
-        spotlight.style.setProperty("--y", e.clientY + "px");
-      });
+      if (spotlight) {
+        document.addEventListener("mousemove", (e) => {
+          spotlight.style.setProperty("--x", e.clientX + "px");
+          spotlight.style.setProperty("--y", e.clientY + "px");
+        });
+      }
 
-      /**
-       * Particles.js Library Configuration
-       * Renders an interactive starfield background
-       */
-      particlesJS("particles-js", {
-        particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: "#89b4fa" },
-          opacity: { value: 0.4 },
-          size: { value: 3 },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#89b4fa",
-            opacity: 0.2,
-            width: 1,
-          },
-          move: { enable: true, speed: 1.5 },
-        },
-        interactivity: {
-          events: {
-            onhover: { enable: true, mode: "grab" },
-            onclick: { enable: true, mode: "push" },
-          },
-          modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } } },
-        },
-      });
+      // Particles (protected)
+      try {
+        if (typeof particlesJS !== "undefined") {
+          particlesJS("particles-js", {
+            particles: {
+              number: { value: 80, density: { enable: true, value_area: 800 } },
+              color: { value: "#89b4fa" },
+              opacity: { value: 0.4 },
+              size: { value: 3 },
+              line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#89b4fa",
+                opacity: 0.2,
+                width: 1,
+              },
+              move: { enable: true, speed: 1.5 },
+            },
+            interactivity: {
+              events: {
+                onhover: { enable: true, mode: "grab" },
+                onclick: { enable: true, mode: "push" },
+              },
+              modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } } },
+            },
+          });
+        }
+      } catch (e) {
+        console.warn("Particles.js skipped:", e);
+      }
 
-      /**
-       * Repository dependency snippets
-       */
+      // Snippets
       const snippets = {
         kts: `repositories {\n    mavenCentral()\n    maven("https://repo.nukecraft5419.com/")\n}\n\ndependencies {\n    implementation("dev.nukecraft5419:nukelexicon:1.1.0")\n}`,
         groovy: `repositories {\n    mavenCentral()\n    maven { url 'https://repo.nukecraft5419.com/' }\n}\n\ndependencies {\n    implementation 'dev.nukecraft5419:nukelexicon:1.1.0'\n}`,
         maven: `<repository>\n    <id>nukecraft5419-repo</id>\n    <url>https://repo.nukecraft5419.com/</url>\n</repository>\n\n<dependency>\n    <groupId>dev.nukecraft5419</groupId>\n    <artifactId>nukelexicon</artifactId>\n    <version>1.1.0</version>\n</dependency>`,
       };
 
-      /**
-       * Syntax Highlighting Engine
-       * Uses a multi-pass approach to isolate strings/URLs before highlighting keywords
-       * This prevents breaking URLs that contain reserved keywords like 'maven' or 'url'
-       */
       function showCode(type) {
         const raw = snippets[type];
-        window.currentRaw = raw; // Store raw text for clipboard
+        if (!raw) return;
 
-        // 1. Initial Escape of HTML entities
+        window.currentRaw = raw;
+
         let text = raw
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;");
 
-        // 2. ISOLATION PASS: Protect strings and XML contents from being broken by keyword rules
         const savedStrings = [];
         const stringRegex =
           /(".+?"|'.+?'|(?<=&lt;url&gt;)(.*?)(?=&lt;\/url&gt;))/g;
@@ -419,7 +414,6 @@
           return `__SAVED_STR_${savedStrings.length - 1}__`;
         });
 
-        // 3. KEYWORD PASS: Apply highlighting to reserved terms
         const kwList = [
           "repositories",
           "dependencies",
@@ -434,18 +428,17 @@
           "version",
           "dependency",
         ];
+
         kwList.forEach((word) => {
           const regex = new RegExp("\\b" + word + "\\b", "g");
           text = text.replace(regex, `<span class="kw">${word}</span>`);
         });
 
-        // 4. COMMENT PASS: Highlight code comments
         text = text.replace(
           /(\/\/.*|&lt;!--.*--&gt;)/g,
           '<span class="cmt">$1</span>',
         );
 
-        // 5. RESTORATION PASS: Re-inject protected strings with highlighting
         savedStrings.forEach((str, i) => {
           text = text.replace(
             `__SAVED_STR_${i}__`,
@@ -453,35 +446,50 @@
           );
         });
 
-        // Inject processed HTML into the pre tag
-        document.getElementById("code-block").innerHTML =
-          `<code>${text}</code>`;
+        const codeBlock = document.getElementById("code-block");
+        if (codeBlock) {
+          codeBlock.innerHTML = `<code>${text}</code>`;
+        }
 
-        // Update active state of tab buttons
         document.querySelectorAll(".tab-btn").forEach((btn) => {
           btn.classList.remove("active");
-          if (btn.getAttribute("onclick").includes(type))
+          if (btn.getAttribute("onclick")?.includes(type)) {
             btn.classList.add("active");
+          }
         });
       }
 
-      /**
-       * Copy text to clipboard and trigger UI success state
-       */
       function copyToClipboard() {
         const btn = document.getElementById("copy-btn");
-        navigator.clipboard.writeText(window.currentRaw).then(() => {
-          btn.innerText = "Copied!";
-          btn.classList.add("success");
-          setTimeout(() => {
-            btn.innerText = "Copy";
-            btn.classList.remove("success");
-          }, 2000);
-        });
+        if (!window.currentRaw || !btn) return;
+
+        navigator.clipboard
+          .writeText(window.currentRaw)
+          .then(() => {
+            btn.innerText = "Copied!";
+            btn.classList.add("success");
+            setTimeout(() => {
+              btn.innerText = "Copy";
+              btn.classList.remove("success");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Copy failed:", err);
+          });
       }
 
-      // Default initialization with Kotlin script on page load
-      document.addEventListener("DOMContentLoaded", () => showCode("kts"));
+      // Safe initialization
+      document.addEventListener("DOMContentLoaded", () => {
+        showCode("kts");
+      });
+
+      // Fallback if DOMContentLoaded has already passed
+      if (
+        document.readyState === "complete" ||
+        document.readyState === "interactive"
+      ) {
+        showCode("kts");
+      }
     </script>
   </body>
 </html>
