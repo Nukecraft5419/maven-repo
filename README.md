@@ -4,7 +4,7 @@
 
   <h1>📦 Nukecraft5419 Maven Repository</h1>
 
-  <em>Official personal Maven repository for hosting custom Java libraries, Spigot APIs, and Javadocs.</em>
+<em>Official personal Maven repository for hosting custom Java libraries, Spigot APIs, and Javadocs.</em>
 
   <br>
 
@@ -94,5 +94,5 @@ This project is licensed under the MIT License.
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by Nukecraft5419</sub>
+  <sub>Powered by Cloudflare Workers & GitHub • Built with ❤️ by Nukecraft5419</sub>
 </div>
